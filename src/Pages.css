@@ -1,0 +1,171 @@
+/* Pages.css (Стили для конкретных страниц и компонентов) */
+/* Источники: [47, 48, 49, 77, 78, 79, 80] */
+
+/* --- Каталог (CatalogPage) --- */
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding-bottom: 2rem;
+}
+
+/* --- Карточка товара (ProductCard Feature) --- */
+.product-card {
+  background-color: var(--color-bg-white);
+  border-radius: 8px;
+  padding: 15px;
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-duration) var(--transition-timing),
+              box-shadow var(--transition-duration) var(--transition-timing); /* [77] */
+}
+
+/* Эффект приподнимания [77, 78] */
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.product-card__image-wrapper {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.product-card__image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.product-card__title {
+  /* [47] */
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  height: 2.64rem; /* Ограничение высоты (примерно 2 строки) [47] */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* line-clamp [47] */
+  -webkit-box-orient: vertical;
+  color: var(--color-text-main);
+}
+
+.product-card__meta {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.product-card__spiciness {
+  font-weight: 600;
+}
+.spiciness--1 { color: #FFC107; } /* Желтый */
+.spiciness--2 { color: #FF9800; } /* Оранжевый */
+.spiciness--3 { color: #E53935; } /* Красный (var(--color-danger)) */
+
+.product-card__price-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  margin-top: auto; /* Прижимает к низу */
+  margin-bottom: 15px;
+}
+
+.product-card__price {
+  /* [48] */
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.product-card__price--discount {
+  /* Акционная цена [49] */
+  color: var(--color-danger);
+}
+
+.product-card__old-price {
+  /* Старая цена [49] */
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  text-decoration: line-through;
+}
+
+.product-card__btn {
+  width: 100%;
+}
+
+/* --- Модальное окно (RegistrationModal) --- */
+/* [79, 80] */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  /* Анимация появления (fade-in) [79] */
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  background-color: var(--color-bg-white);
+  padding: 30px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  /* Анимация появления (slide-in) [79] */
+  animation: slideIn 0.3s ease-out;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+}
+
+.modal-title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-form__submit {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.modal-form__footer {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+/* Keyframes для анимаций [72] */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
