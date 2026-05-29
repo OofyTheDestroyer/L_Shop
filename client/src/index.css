@@ -1,0 +1,199 @@
+/* index.css (Глобальные стили и дизайн-токены) */
+/* Источники: [33, 35, 36, 38, 39, 43, 44, 45, 53, 72, 75, 81] */
+
+:root {
+  /* Цветовая архитектура oz.by [38] */
+  --color-primary: #FF6900; /* Теплый оранжевый - Акцент [38] */
+  --color-primary-dark: #D73F09; /* Для hover-эффектов [74] */
+  --color-secondary: #337AB7; /* Приглушенный синий - Дополнительный [38] */
+  --color-success: #00B862; /* Зеленый - Семантический [38] */
+  --color-danger: #E53935; /* Ярко-красный - Ошибка/Скидка [38] */
+  
+  --color-text-main: #333333; /* Темно-серый - Текст [38] */
+  --color-text-secondary: #888888; /* Серый - Второстепенный текст/старая цена [49] */
+  --color-bg-base: #F5F7FA; /* Светло-серый - Фон приложения [38] */
+  --color-bg-white: #ffffff; /* Белый - Фон карточек/форм */
+  --color-border: #dadada; /* Светлая граница */
+
+  /* Типографика [43, 44] */
+  --font-family-base: 'Inter', 'Roboto', 'Open Sans', sans-serif;
+  
+  /* Хелперы для анимаций [81] */
+  --transition-duration: 0.3s;
+  --transition-timing: ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-base);
+  background-color: var(--color-bg-base);
+  color: var(--color-text-main);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* --- Типографика --- */
+h1 {
+  /* [45, 46] */
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin-bottom: 1.5rem;
+}
+
+/* --- Кнопки (UI Components) --- */
+/* [51, 52, 53] */
+.btn {
+  display: inline-block;
+  padding: 12px 24px; /* [55] */
+  border-radius: 4px; /* [56] */
+  font-weight: 600; /* [57] */
+  text-align: center;
+  white-space: nowrap; /* [57] */
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color var(--transition-duration) var(--transition-timing),
+              box-shadow var(--transition-duration) var(--transition-timing),
+              transform var(--transition-duration) var(--transition-timing); /* [72, 75] */
+  text-decoration: none;
+}
+
+/* Микро-взаимодействия при наведении [74, 76] */
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.btn--primary {
+  /* [60-63] */
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+.btn--secondary {
+  /* [65-68] */
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn--secondary:hover {
+  background-color: rgba(255, 105, 0, 0.05); /* Легкий оранжевый фон */
+}
+
+/* --- Поля ввода (Inputs) --- */
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--color-text-main);
+}
+
+.input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-family: var(--font-family-base);
+  font-size: 1rem;
+  transition: border-color var(--transition-duration) var(--transition-timing);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+}
+
+/* Семантические цвета для валидации [40] */
+.input--error {
+  border-color: var(--color-danger);
+}
+
+.error-message {
+  color: var(--color-danger);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+/* --- Хедер (Layout) --- */
+.header {
+  /* [88, 89] */
+  position: sticky;
+  top: 0;
+  background-color: var(--color-bg-white);
+  padding: 15px 0;
+  border-bottom: 1px solid var(--color-border);
+  z-index: 100;
+  margin-bottom: 2rem;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.nav__list {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: var(--color-text-main);
+  font-weight: 500;
+  transition: color var(--transition-duration) var(--transition-timing);
+}
+
+.nav__link:hover {
+  color: var(--color-primary);
+}
+
+.cart-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: var(--color-primary); /* [38] */
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
