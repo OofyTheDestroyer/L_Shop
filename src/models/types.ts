@@ -5,12 +5,7 @@ export interface User {
     password: string;
     email?: string;
     phone?: string;
-    cart: CartItem[]; // Корзина юзера
-}
-
-export interface CartItem {
-    productId: number | string;
-    quantity: number;
+    // cart убрана — теперь корзина хранится отдельно в Basket
 }
 
 export interface Address {
@@ -35,4 +30,28 @@ export interface Product {
         price: number;
     };
     discount?: number;
+}
+
+// ─── Корзина (из second-backend) ────────────────────────────
+
+export interface BasketProduct {
+    count: number;
+    product: Product;
+}
+
+export interface Basket {
+    id: string;
+    userId: string;
+    basket: BasketProduct[];
+}
+
+// ─── Доставка (из second-backend) ───────────────────────────
+
+export interface Delivery {
+    id: string;
+    userId: string;
+    address: string;
+    phone: string;
+    email: string;
+    status: string;
 }

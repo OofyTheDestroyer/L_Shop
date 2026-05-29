@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-const basePath = path.join(__dirname, '../../data');
+const basePath = path.join(__dirname, '../../database');
 
 export const readDB = async <T>(filename: string): Promise<T[]> => {
     try {

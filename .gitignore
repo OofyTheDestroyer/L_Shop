@@ -16,3 +16,4 @@ yarn-error.log*
 # Настройки IDE
 .vscode/
 .idea/
+database/*.json

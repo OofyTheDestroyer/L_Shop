@@ -12,8 +12,8 @@ export const register = async (req: Request, res: Response) => {
     }
 
     const newUser: User = {
-        id: Date.now().toString(),
-        login, name, password, email, phone, cart: []
+    id: Date.now().toString(),
+    login, name, password, email, phone
     };
 
     users.push(newUser);
@@ -43,5 +43,5 @@ export const login = async (req: Request, res: Response) => {
         maxAge: 10 * 60 * 1000
     });
 
-    res.json({ message: "Вход выполнен", cart: user.cart });
+    res.json({ message: "Вход выполнен" });
 };
