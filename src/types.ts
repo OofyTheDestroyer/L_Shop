@@ -43,6 +43,7 @@ export interface IDeliveryState {
   address: string;
   phone: string;
   email: string;
+  comment?: string;
   paymentMethod: 'card' | 'cash';
 }
 
